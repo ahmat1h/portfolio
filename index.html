@@ -1,9 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<html>
-  <head>
-  
-  </head>
-  <body>
-    <h1>Test</h1>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasan Ahmati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0B0C10;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      /* Enables smooth scrolling */
+    }
+
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #1F2833;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    header .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    header .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      /* Required for pseudo-element positioning */
+      padding: 5px;
+      /* Optional for spacing */
+    }
+
+    header .menu-icon {
+      display: none;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    header .nav-links a:hover {
+      color: #66FCF1;
+      /* Change text color on hover */
+    }
+
+    header .nav-links a::after {
+      content: '';
+      /* Empty content for the line */
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      /* Position the line slightly below the text */
+      width: 0;
+      /* Start with no line */
+      height: 2px;
+      /* Thickness of the line */
+      background-color: #66FCF1;
+      /* Line color */
+      transition: width 0.3s ease;
+      /* Smooth animation */
+    }
+
+    header .nav-links a:hover::after {
+      width: 100%;
+      /* Expand the line fully on hover */
+    }
+
+    main {
+      padding-top: 100px;
+      /* Adjust based on header height */
+    }
+
+    section#about {
+      margin-top: 20px;
+      /* Adjust to ensure proper spacing */
+    }
+
+    h1 {
+      color: #66FCF1;
+      text-align: center;
+    }
+
+    .AboutMe {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .LeftAbout {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .personalimage {
+      max-width: 70%;
+      height: auto;
+      border-radius: 40px;
+    }
+
+    .RightAbout {
+      display: flex;
+      flex-direction: column;
+      flex: 1.7;
+      align-items: center;
+    }
+
+    .name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #66FCF1;
+      font-family: 'Poppins', sans-serif;
+      margin: 20px 0;
+    }
+
+    .skills {
+      width: 90%;
+      text-align: center;
+      height: 200px;
+      /* Set a fixed height */
+    }
+
+    .about-summary {
+      text-align: center;
+      margin: 20px auto 40px auto;
+      /* Spacing to visually separate from the header */
+      color: #9BA8AB;
+      max-width: 800px;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    /* Tabs Styling */
+    .tabs {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 10px;
+    }
+
+    .tabs button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+    }
+
+    .tabs button.active {
+      border-bottom: 2px solid #66FCF1;
+    }
+
+    .tabs button:hover {
+      color: #66FCF1;
+    }
+
+    .tab-content {
+      display: none;
+      text-align: left;
+      height: 100%;
+      /* Match the parent container */
+    }
+
+    .tab-content.active {
+      display: block;
+      color: #9BA8AB;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      color: white;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: scale(1.2);
+      color: #66FCF1;
+    }
+
+    .whyme {
+      font-family: Arial, sans-serif;
+      background-color: transparent;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      /* Add padding for spacing */
+    }
+
+    .whyme h1 {
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 2rem;
+      text-align: center;
+      color: #66FCF1;
+      margin-bottom: 20px;
+      /* Add spacing below heading */
+    }
+
+    /* Container for cards */
+    .card-container {
+      display: flex;
+      flex-wrap: nowrap;
+      /* Allow wrapping for smaller screens */
+      gap: 20px;
+      justify-content: center;
+      max-width: 1200px;
+      padding: 20px;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    /* Individual card styling */
+    .card {
+      background-color: #1F2833;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card hr {
+      border: none;
+      border-top: 2px solid #006466;
+      margin: 10px auto;
+      width: 80%;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* Apply hover effect only on the card itself */
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-container {
+      background-color: #0B0C10;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      margin: 20px auto;
+      /* Add spacing from other sections */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      /* Subtle shadow for depth */
+    }
+
+    .experience-item {
+      margin-bottom: 30px;
+      /* Increase spacing between items */
+    }
+
+    .experience-item h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      /* Align title and dates */
+      flex-wrap: wrap;
+      /* Allow wrapping for smaller screens */
+    }
+
+    .experience-item h3 span {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #66FCF1;
+      /* Accent color */
+      margin-top: 5px;
+      /* Add spacing for wrapped content */
+    }
+
+    .experience-item p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #9BA8AB;
+      /* Lighter text for contrast */
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #333;
+      /* Subtle line */
+      margin: 20px 0;
+      /* Space around the line */
+    }
+
+    .projects-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: nowrap;
+      /* Allows wrapping for smaller screens */
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+    }
+
+    .project-card {
+      background-color: #1F2833;
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      text-align: left;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #66FCF1;
+      margin-bottom: 5px;
+    }
+
+    .project-card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .project-card hr {
+      border: none;
+      border-top: 2px solid #006466;
+      margin: 10px 0;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+
+    .project-card button {
+      background-color: transparent;
+      border: 2px solid #66FCF1;
+      color: #66FCF1;
+      padding: 10px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      align-self: center;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .project-card button:hover {
+      background-color: #66FCF1;
+      color: #1F2833;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .contact-container {
+      display: flex;
+      justify-content: space-between;
+      /* Ensures even spacing between sections */
+      align-items: flex-start;
+      /* Aligns the top of the two sections */
+      padding: 50px 20px;
+      gap: 50px;
+      margin-top: 50px;
+      /* Adds spacing between left and right sections */
+    }
+
+    .contact-info {
+      flex: 1;
+      /* Makes the left section occupy less space */
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      /* Stack items vertically */
+      justify-content: center;
+      /* Center items vertically */
+      align-items: center;
+      /* Center items horizontally */
+      text-align: center;
+      /* Center text within the elements */
+    }
+
+    .contact-info h1 {
+      color: #66FCF1;
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info p {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: white;
+    }
+
+    .socials_contact {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: scale(1.2);
+      color: #66FCF1;
+    }
+
+    .download-btn {
+      background-color: #FF3366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .download-btn:hover {
+      background-color: #FF4C7D;
+      transform: scale(1.02);
+    }
+
+    .contact-form {
+      flex: 2;
+      /* Makes the right section occupy more space */
+      max-width: 950px;
+    }
+
+    .contact-form form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: none;
+      background-color: #1F2833;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      resize: none;
+    }
+
+    .submit-btn {
+      background-color: #FF3366;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .submit-btn:hover {
+      background-color: #FF4C7D;
+    }
+
+
+
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 15px;
+        /* Reduce padding on smaller screens */
+      }
+
+      header .nav-links {
+        display: none;
+        /* Hide nav links on mobile */
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #1F2833;
+        padding: 10px 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      header .menu-icon {
+        display: block;
+        /* Show "+" icon on mobile */
+      }
+
+      header .nav-links.active {
+        display: flex;
+        /* Show nav links when "+" is clicked */
+      }
+
+      .AboutMe {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+      }
+
+      .RightAbout {
+        align-items: center;
+        text-align: center;
+      }
+
+      .skills {
+        width: 100%;
+      }
+
+      .card-container {
+        flex-direction: column;
+        /* Stack cards vertically */
+        align-items: center;
+      }
+
+      .card {
+        width: 90%;
+        /* Adjust card width for smaller screens */
+      }
+
+      .experience-container {
+        width: 90%;
+        /* Increase width for smaller screens */
+      }
+
+      .experience-item h3 {
+        font-size: 1.2rem;
+        /* Adjust font size for smaller screens */
+      }
+
+      .experience-item p {
+        font-size: 0.9rem;
+        /* Adjust text size for readability */
+      }
+
+      hr {
+        margin: 15px 0;
+        /* Reduce spacing between items */
+      }
+
+      .projects-container {
+        gap: 15px;
+        justify-content: space-around;
+        /* Align cards better on tablets */
+      }
+
+      .project-card {
+        width: 45%;
+        flex-shrink: 0;
+        /* Shrink card size for tablet screens */
+      }
+
+      .project-card h2 {
+        font-size: 1.1rem;
+      }
+
+      .project-card p {
+        font-size: 0.85rem;
+      }
+
+      .projects-container {
+        flex-wrap: nowrap;
+        /* Disable wrapping */
+        overflow-x: auto;
+        /* Enable horizontal scroll */
+        scrollbar-width: none;
+        /* Hide scrollbar for Firefox */
+      }
+
+      .projects-container::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar for Chrome, Safari, etc. */
+      }
+
+      .scroll-btn {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        /* Center the buttons vertically */
+        transform: translateY(-50%);
+        background-color: #66FCF1;
+        color: #1F2833;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+      }
+
+      .scroll-btn.left {
+        left: -50px;
+        /* Position for left scroll button */
+      }
+
+      .scroll-btn.right {
+        right: -50px;
+        /* Position for right scroll button */
+      }
+
+      .scroll-btn:hover {
+        background-color: #45A29E;
+      }
+
+      .contact-container {
+        flex-direction: column;
+        /* Stack sections vertically */
+        align-items: center;
+        gap: 20px;
+        /* Add spacing between stacked sections */
+      }
+
+      .contact-info {
+        max-width: 100%;
+        /* Full width on smaller screens */
+        text-align: center;
+      }
+
+      .contact-form {
+        max-width: 100%;
+        /* Full width on smaller screens */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tabs button {
+        font-size: 0.9rem;
+      }
+
+      .personalimage {
+        max-width: 80%;
+      }
+
+      .name {
+        font-size: 1.5rem;
+      }
+
+      .whyme h1 {
+        font-size: 1.5rem;
+        /* Adjust heading size for small screens */
+      }
+
+      .card {
+        padding: 15px;
+        /* Reduce padding */
+        width: 100%;
+        /* Full width for smaller screens */
+      }
+
+      .card h3 {
+        font-size: 1.2rem;
+        /* Adjust font size */
+      }
+
+      .card p {
+        font-size: 0.9rem;
+        /* Adjust text size */
+      }
+
+      .experience-item h3 {
+        font-size: 1rem;
+        /* Further adjust title size */
+      }
+
+      .experience-item p {
+        font-size: 0.85rem;
+        /* Ensure readability on small screens */
+      }
+
+      .projects-container {
+        flex-wrap: wrap;
+        flex-shrink: 0;
+      }
+
+      .project-card {
+        width: 100%;
+        /* Full-width cards for mobile screens */
+      }
+
+      .project-card h2 {
+        font-size: 1rem;
+      }
+
+      .project-card p {
+        font-size: 0.8rem;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Hasan Ahmati</div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav class="nav-links">
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#experience" onclick="closeMenu()">Experience</a>
+      <a href="#projects" onclick="closeMenu()">Projects</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
+
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h1 style="font-size: 2rem;">About Me</h1>
+      <!-- Section Introduction -->
+      <p class="about-summary">
+        Welcome to my portfolio! I am Hasan Ahmati, an aspiring Software Engineer with a passion for technology,
+        problem-solving, and innovation. Explore my technical skills, soft skills, and education to see how I make an
+        impact.
+      </p>
+      <div class="AboutMe">
+        <div class="LeftAbout">
+          <img class="personalimage" src="images/placeholder.png" alt="Profile Picture">
+        </div>
+        <div class="RightAbout">
+          <div class="name">HASAN AHMATI</div>
+          <div class="skills">
+            <!-- Tabs -->
+            <div class="tabs">
+              <button class="tab-button active" onclick="showTab(event, 'skillsContent')">Technical Skills</button>
+              <button class="tab-button" onclick="showTab(event, 'softskillsContent')">Soft Skills</button>
+              <button class="tab-button" onclick="showTab(event, 'educationContent')">Education</button>
+            </div>
+            <!-- Tab Content -->
+            <div id="skillsContent" class="tab-content active">
+              <li>Python (NumPy, Pandas, SciKit-Learn, TensorFlow, MatPlotLib), Java, Kotlin, Scheme, R, SQL, Hadoop,
+                Hive</li>
+              <li>Web Development (HTML, CSS, JavaScript), UI/UX Design (Figma, Axure RP)</li>
+              <li>Version Control (Azure DevOps, Git)</li>
+              <li>Neural Networks (ANN, CNN, LSTM, YOLO)</li>
+            </div>
+            <div id="softskillsContent" class="tab-content">
+              <p>Problem-solving, strong analytical skills, teamwork, adaptability, troubleshooting, communication, time
+                management, critical & logical thinking, leadership potential, attention to detail, multitasking,
+                collaboration, creativity, resilience.</p>
+            </div>
+            <div id="educationContent" class="tab-content">
+              <p>2022-2025 | BSc Computer Science | University of Greenwich</p>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/hasan-ahmati-1aba76297/" target="_blank" class="social-link"><i
+                class="fa-brands fa-linkedin"></i></a>
+            <a href="mailto:ahmati.hasan1@gmail.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/ahmat1h" target="_blank" class="social-link"><i
+                class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section id="whymesection">
+    <div class="whyme">
+      <h1>Why Me?</h1>
+      <div class="card-container">
+        <div class="card">
+          <h3>Technical Expertise</h3>
+          <hr>
+          <p>Proficient in Python, Java, Kotlin, SQL, and modern web development frameworks.</p>
+        </div>
+        <div class="card">
+          <h3>Problem-Solving Skills</h3>
+          <hr>
+          <p>Proven ability to tackle complex challenges through critical thinking and innovation.</p>
+        </div>
+        <div class="card">
+          <h3>Adaptability & Resilience</h3>
+          <hr>
+          <p>Excelled under high-pressure environments while maintaining outstanding results.</p>
+        </div>
+        <div class="card">
+          <h3>Collaborative Leadership</h3>
+          <hr>
+          <p>Successfully mentored and collaborated with diverse teams on impactful projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="experience">
+    <h1 style="color: #66FCF1; text-align: center; font-size: 35px; margin-top: 50px;">And this is <b>MY CAREER</b> so
+      far</h1>
+    <div class="experience-container">
+      <div class="experience-item">
+        <h3>IT Service Desk Analyst at University of Greenwich <span>2024 - Present</span></h3>
+        <p>Assisting students and faculty members with first and second-line assistance, identifying and troubleshooting
+          IT issues. Collaborating with staff at different levels to guarantee smooth operations.</p>
+      </div>
+      <div class="experience-item">
+        <h3>Vice President AI Society Univeristy of Greenwich <span>January 2024 - Present</span></h3>
+        <p>Organized a Talk on Data and AI Insights and a Hackathon in partnership with 6point6. Leading a team of 3
+          members, coordinating event logistics and speaker engagements.
+          Expanding the number of active members and participants in our events</p>
+      </div>
+      <hr>
+      <div class="experience-item">
+        <h3>Site Support Assistant at ARALB Electrical (part-time) <span>2022 - 2024</span></h3>
+        <p>Assisted with project tasks, including tracking invoices, managing material costs, and ensuring accurate
+          pricing for electrical installations, ensuring continuous workflow and cost efficiency.</p>
+      </div>
+      <hr>
+      <div class="experience-item">
+        <h3>IT Specialist at Tring (internship) <span>May 2022 - July 2022</span></h3>
+        <p>Contributed to network monitoring and troubleshooting to guarantee smooth operations and helped with hardware
+          and software issues. Developed analytical thinking and problem-solving skills through addressing problems in
+          real time.</p>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <h1 style="color: #66FCF1; text-align: center; font-size: 35px;">My Projects</h1>
+    <div class="projects-wrapper">
+      <button class="scroll-btn left" onclick="scrollLeft()">&#8249;</button>
+      <div class="projects-container">
+        <div class="project-card">
+          <h3>Deep Learning</h3>
+          <h2>Golden Ratio Detector in 2D Logos (in-progress)</h2>
+          <hr>
+          <p><b>Objective:</b> Develop models to evaluate the alignment of 2D logos with the golden ratio aesthetics.
+          </p>
+          <p><b>Techniques Used:</b> Applying deep learning approach using custom-built dataset, mathematical
+            calculation-based evaluation</p>
+          <p><b>Tools/Libraries:</b> Python, YOLOv5, OpenCV, pandas, scikit-learn, matplotlib.</p>
+          <p><b>Impact:</b> Enhance design evaluation and visual alignment for logo aesthetics in branding</p>
+          <button>View Project</button>
+        </div>
+        <div class="project-card">
+          <h3>Deep Learning</h3>
+          <h2>Credit Card Fraud Detection System</h2>
+          <hr>
+          <p><b>Objective:</b> Classify fraud and non-fraud credit card transactions.</p>
+          <p><b>Techniques Used:</b> Built a CNN model for binary classification</p>
+          <p><b>Tools/Libraries:</b> Python, TensorFlow, keras, pandas, scikit-learn, MatPlotLib</p>
+          <p><b>Impact:</b> Improved fraud detection accuracy compared to other models</p>
+          <button
+            onclick="window.open('https://github.com/ahmat1h/Credit-Card-Fraud-detection-using-CNN', '_blank')">View
+            Project</button>
+        </div>
+        <div class="project-card">
+          <h3>Website development</h3>
+          <h2>Personal Website</h2>
+          <hr>
+          <p><b>Objective:</b> Create a personal website
+          </p>
+          <p><b>Techniques Used:</b> Using HTML, CSS and JS for front-end, while MySQL and PHP are used for the back-end to store the data from the contact form</p>
+          <p><b>Tools/Libraries:</b> Javascript, PHP, MySQL, HTML, CSS </p>
+          <p><b>Impact:</b> served as a portfolio to showcase skills and projects, increasing professional visibility and enabling effective communication with collaborators</p>
+        </div>
+        <div class="project-card">
+          <h3>Recommendation System</h3>
+          <h2>Social Network Recommendation System</h2>
+          <hr>
+          <p><b>Objective:</b> Develop a recommendation system using object-oriented and functional programming</p>
+          <p><b>Techniques Used:</b> Designed algorithms in Python and Scheme. Focused on efficient recommendation logic
+            and user-specific results.</p>
+          <p><b>Tools/Libraries:</b> Python, Scheme</p>
+          <p><b>Impact:</b> Delivered accurate and personalized recommendations for end-users.</p>
+          <button onclick="window.open('https://github.com/ahmat1h/Social-network-using-python', '_blank')">View
+            Project</button>
+        </div>
+        <div class="project-card">
+          <h3>Socket programming</h3>
+          <h2>Group-based Client-Server Communication</h2>
+          <hr>
+          <p><b>Objective:</b> Implement a command-line interface client-server application in Java</p>
+          <p><b>Techniques Used:</b> Designed and built a multi-client architecture. Implemented robust communication
+            protocols in Java</p>
+          <p><b>Tools/Libraries:</b> Java</p>
+          <p><b>Impact:</b> Demonstrated efficient and scalable group-based communication applications.</p>
+          <button onclick="window.open('https://github.com/ahmat1h/JAVA_SocketProgramming', '_blank')">View
+            Project</button>
+        </div>
+      </div>
+  </section>
+  <section id="contact">
+    <div class="contact-container">
+      <!-- Left Section -->
+      <div class="contact-info">
+        <h1>Contact</h1>
+        <p><i class="fas fa-envelope"></i> ahmati.hasan1@gmail.com</p>
+        <p><i class="fas fa-phone-alt"></i> +447361237329</p>
+        <div class="socials_contact">
+          <a href="https://www.linkedin.com/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:ahmati.hasan1@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+          <a href="https://github.com/" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+        <button onclick="window.open('files/Hasan Ahmati- Resume.pdf', '_blank')" class="download-btn">Download
+          CV</button>
+      </div>
+
+      <!-- Right Section (Contact Form) -->
+      <div class="contact-form">
+        <form id="contactForm" action="send_email.php" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit" class="submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <script>
+    // Toggle the mobile navigation menu
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+    }
+
+    // Close the menu after clicking a link (for mobile)
+    function closeMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      if (window.innerWidth <= 768) {
+        navLinks.classList.remove('active');
+      }
+    }
+    function showTab(event, tabId) {
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.tab-button');
+      buttons.forEach(button => button.classList.remove('active'));
+
+      // Hide all tab contents
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Activate the clicked button
+      event.currentTarget.classList.add('active');
+
+      // Show the corresponding tab content
+      document.getElementById(tabId).classList.add('active');
+    }
+    function scrollLeft() {
+      const container = document.querySelector('.projects-container');
+      container.scrollBy({
+        left: -300, // Adjust based on card width
+        behavior: 'smooth',
+      });
+    }
+
+    function scrollRight() {
+      const container = document.querySelector('.projects-container');
+      container.scrollBy({
+        left: 300, // Adjust based on card width
+        behavior: 'smooth',
+      });
+      function downloadCV() {
+        // Redirect to CV download link
+        window.open("files/Hasan Ahmati- Resume.pdf", "_blank");
+      }
+    }
+  </script>
+</body>
+
 </html>
